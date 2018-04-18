@@ -189,7 +189,7 @@ public class TwitterAPI {
         }
 
         try {
-            //StatusUpdate statusUpdate = new StatusUpdate(statusString.replaceAll("@", "").replaceAll("#", ""));
+            // StatusUpdate statusUpdate = new StatusUpdate(statusString.replaceAll("@", "").replaceAll("#", ""));
             StatusUpdate statusUpdate = new StatusUpdate(statusString);
             statusUpdate.setMedia(new File(filename));
             Status status = twitter.updateStatus(statusUpdate);

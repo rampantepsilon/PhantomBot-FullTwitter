@@ -14,7 +14,7 @@
 
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- 
+
  @author IllusionaryOne
 -->
 
@@ -65,7 +65,7 @@
             </span>
             <div id="newPanelAlert" class="alert" style="display:none"></div>
         </div>
-             
+
         <span id="panelLoader"><i style="color: purple" class="fa fa-spinner fa-spin fa-5x"></i><br><br>Loading PhantomBot Control Panel</span>
 
         <div id="newVersionDialog" title="New Version Available" style="font-size: 90%"> </div>
@@ -235,29 +235,19 @@
                    <i class="fa fa-bars"></i>
                </div>
                <i class="fa fa-twitch"></i>
-                <div id="twitch-embed"></div>
             </div>
             <!-- <span id="iframeLoader"><i style="color: purple" class="fa fa-spinner fa-spin fa-5x"></i><br><br>Loading Twitch Chat</span> -->
-            <script src="https://embed.twitch.tv/embed/v1.js"></script>
-            <script type="text/javascript">
-                new Twitch.Embed("twitch-embed", {
-                    width: 360,
-                    height: 203,
-                    channel: getChannelName().toLowerCase(),
-                    layout: "video"
-                });
-            </script>
              <script>
-                 $(function() {
+                $(function() {
                     var toggle = localStorage.getItem('phantombot_chattoggle');
-    
+
                     if (toggle === 'false') {
                         $("#chatsidebar").hide();
                         return;
                     }
-    
+
                     $("#chatsidebar").append("<iframe id=\"chat\" frameborder=\"0\" scrolling=\"no\" onload=\"hideLoadingImage()\"" +
-                        "src=\"https://www.twitch.tv/embed/" + getChannelName().toLowerCase() + "/chat\">");
+                                             "src=\"https://www.twitch.tv/embed/" + getChannelName().toLowerCase() + "/chat\">");
                     $("#chatsidebar").draggable({ iframeFix: true });
                 });
             </script>
@@ -265,9 +255,9 @@
 
         <br>
         <br>
-        
+
         <div id="copyright">
-            Control Panel by: 
+            Control Panel by:
             <a href="https://phantombot.tv">phantombot.tv</a>
         </div>
 

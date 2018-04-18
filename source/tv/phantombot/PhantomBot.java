@@ -107,8 +107,8 @@ import tv.phantombot.event.twitch.follower.TwitchFollowEvent;
 import tv.phantombot.event.twitch.host.TwitchHostedEvent;
 import tv.phantombot.event.twitch.offline.TwitchOfflineEvent;
 import tv.phantombot.event.twitch.online.TwitchOnlineEvent;
-import tv.phantombot.event.twitch.clip.TwitchClipEvent;
 import tv.phantombot.event.twitter.TwitterRetweetEvent;
+import tv.phantombot.event.twitch.clip.TwitchClipEvent;
 import tv.phantombot.httpserver.HTTPServer;
 import tv.phantombot.httpserver.HTTPSServer;
 import tv.phantombot.panel.PanelSocketSecureServer;
@@ -1563,7 +1563,10 @@ public final class PhantomBot implements Listener {
                 randomUser = argument[0];
             }
             print("[CONSOLE] Executing cliptest " + randomUser);
-            EventBus.instance().postAsync(new TwitchClipEvent("https://clips.twitch.tv/ThisIsNotARealClipAtAll", randomUser));
+            EventBus.instance().postAsync(new TwitchClipEvent("https://clips.twitch.tv/ThisIsNotARealClipAtAll", randomUser, "Some title",
+                new org.json.JSONObject("{\"medium\": \"https://clips-media-assets.twitch.tv/vod-107049351-offset-26-preview-480x272.jpg\", " +
+                    "\"small\": \"https://clips-media-assets.twitch.tv/vod-107049351-offset-26-preview-260x147.jpg\", " +
+                    "\"tiny\": \"https://clips-media-assets.twitch.tv/vod-107049351-offset-26-preview-86x45.jpg\"}")));
             return;
         }
 
@@ -1905,6 +1908,19 @@ public final class PhantomBot implements Listener {
             arguments = commandString.substring(commandString.indexOf(" ") + 1);
         }
         EventBus.instance().postAsync(new CommandEvent(username, command, arguments));
+    }
+
+    /* Handle commands */
+    public void handleCommandSync(String username, String command) {
+        String arguments = "";
+
+        /* Does the command have arguments? */
+        if (command.contains(" ")) {
+            String commandString = command;
+            command = commandString.substring(0, commandString.indexOf(" "));
+            arguments = commandString.substring(commandString.indexOf(" ") + 1);
+        }
+        EventBus.instance().post(new CommandEvent(username, command, arguments));
     }
 
     /* Handles dev debug commands. */

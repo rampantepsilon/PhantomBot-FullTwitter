@@ -14,7 +14,7 @@
 /* Do Not Edit Past Here (Unless you know what your doing)*/
 
 #logo {
-    height: 70px;
+    height: 65px;
     margin-left: 15px;
     float: left;
     display: inline-block;
@@ -365,7 +365,7 @@ td {
     top: 82px;
     right: 10px;
     bottom: 0;
-    height: 450px;
+    height: 650px;
     width: 360px;
     border: none !important;
     outline: none !important;
