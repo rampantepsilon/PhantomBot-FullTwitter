@@ -25,7 +25,7 @@ import java.util.jar.Manifest;
 public class RepoVersion {
 
     private static final String phantomBotVersion = "2.4.0.3";
-    private static final String repoVersion = "2018.4.18";
+    private static final String repoVersion = "2018.04.30";
     private static final String buildType = "@buildtype@";
     private static final String panelVersion = "@webpanel.version@";
 

@@ -329,7 +329,7 @@ public final class PhantomBot implements Listener {
      * @return {string} bot developers
      */
     public String botDevelopers() {
-        return "Developers: PhantomIndex, Kojitsari, ScaniaTV, Zelakto & IllusionaryOne";
+        return "Developers: PhantomIndex, Kojitsari, ScaniaTV, Zackery (Zelakto) & IllusionaryOne";
     }
 
     /*
@@ -1599,8 +1599,12 @@ public final class PhantomBot implements Listener {
 
         /* test the bits event */
         if (message.equalsIgnoreCase("bitstest")) {
+            String sendMessage = "This is a message from Twitch.";
+            if (argument != null) {
+                sendMessage = String.join(" ", argument);
+            }
             print("[CONSOLE] Executing bitstest");
-            EventBus.instance().postAsync(new TwitchBitsEvent(this.botName, "100"));
+            EventBus.instance().postAsync(new TwitchBitsEvent(this.botName, "100", sendMessage));
             return;
         }
 
@@ -2142,7 +2146,7 @@ public final class PhantomBot implements Listener {
                 com.gmt2001.Console.out.print("Welcome to the PhantomBot setup process!\r\n");
                 com.gmt2001.Console.out.print("If you have any issues please report them on our forum or Tweet at us!\r\n");
                 com.gmt2001.Console.out.print("Forum: https://community.phantombot.tv/\r\n");
-                com.gmt2001.Console.out.print("Twitter: https://twitter.com/phantombotapp/\r\n");
+                com.gmt2001.Console.out.print("Twitter: https://twitter.com/PhantomBot/\r\n");
                 com.gmt2001.Console.out.print("PhantomBot Knowledgebase: https://docs.phantombot.tv/\r\n");
                 com.gmt2001.Console.out.print("\r\n");
                 com.gmt2001.Console.out.print("\r\n");

@@ -1,12 +1,12 @@
 
 
-# <img alt="PhantomBot" src="https://phantombot.tv/img/new-logo-dark-v2.png" width="600px"/>
+# <img alt="PhantomBot" src="https://i.zelakto.tv/images/bN4H.png" width="600px"/>
 
- [![Build Status](https://travis-ci.org/PhantomBot/PhantomBot.svg?branch=master)](https://travis-ci.org/PhantomBot/PhantomBot) 
- [<img src="https://discordapp.com/api/guilds/107910097937682432/widget.png?style=shield">](https://discord.gg/Xdh5SRY)
+[![Build Status](https://travis-ci.org/PhantomBot/PhantomBot.svg?branch=master)](https://travis-ci.org/PhantomBot/PhantomBot)
+[<img src="https://discordapp.com/api/guilds/107910097937682432/widget.png?style=shield">](https://discord.gg/Xdh5SRY)
 
 [**PhantomBot**](https://phantombot.tv) is a Twitch chat bot powered by Java. PhantomBot has many modern features out of the box such as a built-in webpanel, enhanced moderation, games, a point system, raffles, custom commands, a music player, [and more](https://phantombot.tv/features)! PhantomBot can also be integrated with many services such as [Discord](https://discordapp.com/), [Twitter](https://twitter.com), [GameWisp](https://gamewisp.com), [StreamTip](https://streamtip.com), [TipeeeStream](https://tipeeestream.com), [StreamLabs](https://streamlabs.com) and [StreamElements](https://streamelements.com)!
-<br/><br/><b>NOTE: This is not an official version of PhantomBot. In this version, the Twitter removal of @ and # are gone and the bot can post @ and # if added to the webpanel. Based off of the 4/18/2018 development build.</b>
+<br/><br/><b>NOTE: This is not an official version of PhantomBot. In this version, the Twitter removal of @ and # are gone and the bot can post @ and # if added to the webpanel. Based off of the 4/30/2018 development build.</b>
 
 Additional functionality is enabled through the use of third-party modules.
 
@@ -15,7 +15,7 @@ Additional functionality is enabled through the use of third-party modules.
 * [Community Forums](https://community.phantombot.tv "PhantomBot Community Forums")
 * [Documentation & Installation Instructions](https://docs.phantombot.tv "Documenation and Installation Instructions")
 * [PhantomBot Blog](https://blog.phantombot.tv "PhantomBot Blog")
-* [Follow us on Twitter](https://www.twitter.com/PhantomBotApp "PhantomBot Twitter")
+* [Follow us on Twitter](https://www.twitter.com/PhantomBot "PhantomBot Twitter")
 
 ## Screenshots
 [![](https://i.zelakto.tv/images/YaDd.png)](https://i.zelakto.tv/images/Yu7W.png "PhantomBot Console")
