@@ -24,10 +24,10 @@ import java.util.jar.Manifest;
 
 public class RepoVersion {
 
-    private static final String phantomBotVersion = "2.4.0.3";
-    private static final String repoVersion = "2018.04.30";
-    private static final String buildType = "@buildtype@";
-    private static final String panelVersion = "@webpanel.version@";
+    private static final String phantomBotVersion = "2.4.1";
+    private static final String repoVersion = "20180523";
+    private static final String buildType = "Development";
+    private static final String panelVersion = "20180523";
 
     private RepoVersion() {
     }
