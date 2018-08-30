@@ -29,7 +29,7 @@
      * @event streamTipDonation
      */
     $.bind('streamTipDonation', function(event) {
-        if (announce === false || toggle === false || channelName == '') {
+        if (toggle === false || announce === false || channelName == '') {
             return;
         }
 
@@ -71,14 +71,7 @@
             s = $.replace(s, '(message)', donationMsg);
         }
 
-        $.discordAPI.sendMessageEmbed(channelName, new Packages.sx.blah.discord.util.EmbedBuilder()
-                    .withColor(60, 141, 188)
-                    .withThumbnail('https://raw.githubusercontent.com/PhantomBot/Miscellaneous/master/Discord-Embed-Icons/streamtip-embed-icon.png')
-                    .withTitle($.lang.get('discord.streamtiphandler.embed.title'))
-                    .appendDescription(s)
-                    .withTimestamp(Date.now())
-                    .withFooterText('Twitch')
-                    .withFooterIcon($.twitchcache.getLogoLink()).build());
+        $.discord.say(channelName, s);
     });
 
     /**
@@ -96,7 +89,7 @@
 
         if (command.equalsIgnoreCase('streamtiphandler')) {
             if (action === undefined) {
-                $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtiphandler.usage'));
+                $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtipshanlder.usage'));
                 return;
             }
 
@@ -106,7 +99,7 @@
             if (action.equalsIgnoreCase('toggle')) {
                 toggle = !toggle;
                 $.inidb.set('discordSettings', 'streamtipToggle', toggle);
-                $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtiphandler.toggle', (toggle === true ? $.lang.get('common.enabled') : $.lang.get('common.disabled'))));
+                $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtipshanlder.toggle', (toggle === true ? $.lang.get('common.enabled') : $.lang.get('common.disabled'))));
             }
 
             /**
@@ -114,13 +107,13 @@
              */
             if (action.equalsIgnoreCase('message')) {
                 if (subAction === undefined) {
-                    $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtiphandler.message.usage'));
+                    $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtipshanlder.message.usage'));
                     return;
                 }
 
                 message = args.slice(1).join(' ');
                 $.inidb.set('discordSettings', 'streamtipMessage', message);
-                $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtiphandler.message.set', message));
+                $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtipshanlder.message.set', message));
             }
 
             /**
@@ -128,13 +121,13 @@
              */
             if (action.equalsIgnoreCase('channel')) {
                 if (subAction === undefined) {
-                    $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtiphandler.channel.usage'));
+                    $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtipshanlder.channel.usage'));
                     return;
                 }
 
                 channelName = subAction.replace('#', '').toLowerCase();
                 $.inidb.set('discordSettings', 'streamtipChannel', channelName);
-                $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtiphandler.channel.set', channelName));
+                $.discord.say(channel, $.discord.userPrefix(mention) + $.lang.get('discord.streamtipshanlder.channel.set', channelName));
             }
         }
     });

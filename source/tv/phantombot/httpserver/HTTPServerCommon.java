@@ -21,12 +21,9 @@
  */
 package tv.phantombot.httpserver;
 
-import com.sun.net.httpserver.BasicAuthenticator;
+import com.scaniatv.LangFileUpdater;
 import com.sun.net.httpserver.Headers;
-import com.sun.net.httpserver.HttpContext;
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
 
 import java.nio.charset.StandardCharsets;
 import java.io.File;
@@ -35,8 +32,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.InetSocketAddress;
 import java.net.URI;
+import org.apache.commons.io.IOUtils;
 
 import tv.phantombot.PhantomBot;
 
@@ -223,13 +220,21 @@ public class HTTPServerCommon {
                 handleFile(uriPath, exchange, hasPassword, false);
             } else if (uriPath.startsWith("/config/gif-alerts")) {
                 handleFile(uriPath, exchange, hasPassword, false);
+            } else if (uriPath.startsWith("/get-lang")) {
+                handleLangFiles("", exchange, hasPassword, true);
+            } else if (uriPath.startsWith("/lang")) {
+                handleLangFiles(headers.getFirst("lang-path"), exchange, hasPassword, true);
             } else {
                 handleFile("/web" + uriPath, exchange, hasPassword, false);
             }
         }
 
         if (requestMethod.equals("PUT")) {
-            handlePutRequest(myHdrUser, myHdrMessage, exchange, hasPassword);
+            if (myHdrUser.isEmpty() && headers.containsKey("lang-path")) {
+                handlePutRequestLang(headers.getFirst("lang-path"), headers.getFirst("lang-data"), exchange, hasPassword);
+            } else {
+                handlePutRequest(myHdrUser, myHdrMessage, exchange, hasPassword);
+            }
         }
     }
 
@@ -441,6 +446,25 @@ public class HTTPServerCommon {
         sendHTMLError(400, jsonObject.toString(), exchange);
         return;
     }
+    
+    private static void handleLangFiles(String path, HttpExchange exchange, boolean hasPassword, boolean needsPassword) {
+        if (needsPassword) {
+            if (!hasPassword) {
+                sendHTMLError(403, "Access Denied", exchange);
+                return;
+            }
+        }
+        
+        if (path.isEmpty()) {
+            // Get all lang files and their paths.
+            String[] files = LangFileUpdater.getLangFiles();
+        
+            // Send the files.W
+            sendData("text/text", String.join("\n", files), exchange);
+        } else {
+            sendData("text/text", LangFileUpdater.getCustomLang(path), exchange);
+        }
+    }
 
     private static void handleFile(String uriPath, HttpExchange exchange, Boolean hasPassword, Boolean needsPassword) {
         if (needsPassword) {
@@ -594,6 +618,16 @@ public class HTTPServerCommon {
             PhantomBot.instance().getSession().say(message);
         }
         sendData("text/text", "event posted", exchange);
+    }
+
+    private static void handlePutRequestLang(String langFile, String langData, HttpExchange exchange, Boolean hasPassword) throws IOException {
+        if (!hasPassword) {
+            sendHTMLError(403, "Access Denied.", exchange);
+            return;
+        }
+        
+        LangFileUpdater.updateCustomLang(langData, langFile);
+        sendHTMLError(200, "File Updated.", exchange);
     }
 
     private static void sendData(String contentType, String data, HttpExchange exchange) {

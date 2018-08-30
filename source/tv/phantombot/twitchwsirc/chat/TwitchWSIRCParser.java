@@ -281,7 +281,7 @@ public class TwitchWSIRCParser {
 
         // Check if the message is a cheer.
         if (tags.containsKey("bits")) {
-            scriptEventManager.onEvent(new TwitchBitsEvent(username, tags.get("bits"), message));
+            scriptEventManager.onEvent(new TwitchBitsEvent(username, tags.get("bits")));
         }
 
         // Check if the message is a command.

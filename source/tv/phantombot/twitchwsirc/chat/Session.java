@@ -81,32 +81,19 @@ public class Session extends MessageQueue {
     }
 
     /*
-     * Method that sends a raw message to the socket.
+     * Method that returns the socket
      *
-     * @param {String} message
+     * @return {TwitchWSIRC} twitchWSIRC
      */
-    public void sendRaw(String message) {
-        try {
-            this.twitchWSIRC.send(message);
-        } catch (Exception ex) {
-            com.gmt2001.Console.debug.println("Failed to send message to Twitch: " + ex.getMessage());
-        }
-    }
-
-    /*
-     * Method that sends channel message.
-     *
-     * @param {String} message
-     */
-    public void send(String message) {
-        sendRaw("PRIVMSG #" + getChannelName() + " :" + message);
+    public TwitchWSIRC getSocket() {
+        return this.twitchWSIRC;
     }
 
     /*
      * Method that will do the moderation check of the bot.
      */
     public void getModerationStatus() {
-       send(".mods");
+        getSocket().send("PRIVMSG #" + getChannelName() + " :.mods");
     }
 
     /*
@@ -165,7 +152,7 @@ public class Session extends MessageQueue {
         // Kill the message queue.
         this.kill();
         // Send quit command to Twitch to exit correctly.
-        sendRaw("QUIT");
+        getSocket().send("QUIT");
         // Close connection.
         twitchWSIRC.close(1000, "bye");
     }

@@ -6,7 +6,7 @@
 
 [**PhantomBot**](https://phantombot.tv) is a Twitch chat bot powered by Java. PhantomBot has many modern features out of the box such as a built-in webpanel, enhanced moderation, games, a point system, raffles, custom commands, a music player, [and more](https://phantombot.tv/features)! PhantomBot can also be integrated with many services such as [Discord](https://discordapp.com/), [Twitter](https://twitter.com), [GameWisp](https://gamewisp.com), [TipeeeStream](https://tipeeestream.com), [StreamLabs](https://streamlabs.com) and [StreamElements](https://streamelements.com)!
 
-**NOTE: This is not an official version of PhantomBot. In this version, the Twitter removal of @ and # are gone and the bot can post @ and # if added to the webpanel. Based off of the 4/30/2018 development build.**
+**NOTE: This is not an official version of PhantomBot. In this version, the Twitter removal of @ and # are gone and the bot can post @ and # if added to the webpanel. Based off of the 8/30/2018 development build.**
 
 Additional functionality is enabled through the use of third-party modules.
 
